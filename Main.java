@@ -26,6 +26,21 @@ public class Main {
         System.out.println("Keys: " + removeDuplicates("dennis"));
         System.out.println(isStringEmpty(null));
         swapStringsInPlace("den","nis");
+        System.out.println(
+                "There are " +
+                        wordsInSentence("I wonder how many words are in this sentence")
+                            + " words in the sentence");
+
+        System.out.println(
+                "There are " +
+                        wordsInSentenceToo("I wonder how many words are in this sentence")
+                        + " words in the sentence");
+
+        System.out.println(isRotation("dada","adad"));
+        System.out.println(deleteOccurence("dennis", 'n'));
+        System.out.println(convertStringToInteger("34567") + 1);
+        System.out.println(convertIntegerToString(3456));
+
 
     }
 
@@ -160,6 +175,11 @@ public class Main {
         System.out.println("Strings after swapping: " + str1 + " " + str2);
     }
 
+    public static boolean isRotation(String str1, String str2) {
+        str1 = str1.concat(str1);
+        return str1.contains(str2);
+    }
+
     public static boolean isAnagram(String str1, String str2) {
         str1 = str1.toLowerCase().replaceAll("\\s","");
         str2 = str2.toLowerCase().replaceAll("\\s","");
@@ -196,6 +216,33 @@ public class Main {
             }
         }
         return true;
+    }
+
+    public static String deleteOccurence(String str, char ch) {
+        char [] arr = str.toCharArray();
+        StringBuilder str2 = new StringBuilder();
+        for (char data: arr) {
+            if (data != ch) {
+                str2.append(data);
+            }
+        }
+        return str2.toString();
+    }
+
+    public static int wordsInSentence(String str) {
+        return str.split(" ").length;
+    }
+
+    public static int wordsInSentenceToo(String str)  {
+        char [] ch = str.toCharArray();
+
+        int words = 1;
+        for (int data: ch) {
+            if (data == ' ') {
+                ++words;
+            }
+        }
+        return words;
     }
 
     public static Map<Character,Integer> stringToMap(String str) {
@@ -248,6 +295,14 @@ public class Main {
             uniqueValues.append(data.getKey());
         }
         return uniqueValues.toString();
+    }
+
+    public static int convertStringToInteger(String str) {
+        return Integer.parseInt(str);
+    }
+
+    public static String convertIntegerToString(int i) {
+        return String.valueOf(i);
     }
 
 }
