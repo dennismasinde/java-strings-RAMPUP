@@ -6,8 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("The length of the string is " + lengthString("dennis"));
-        System.out.println("Replica values " + copyString("dennis"));
+        System.out.println(lengthString("dennis"));
+        System.out.println(copyString("dennis"));
         System.out.println(reverseString("dennis"));
         System.out.println(palindromeCheck("too hot To HooT"));
         System.out.println(convertToUppercase("dennis masinde"));
@@ -23,7 +23,7 @@ public class Main {
         printNonRepeatedCharacters(map);
         System.out.println();
         System.out.println(firstNonRepeatingCharacter((LinkedHashMap<Character, Integer>) map));
-        System.out.println("Keys: " + removeDuplicates("dennis"));
+        System.out.println(removeDuplicates("dennis"));
         System.out.println(isStringEmpty(null));
         swapStringsInPlace("den","nis");
         System.out.println(
@@ -263,11 +263,9 @@ public class Main {
     public static boolean mapHasUniqueCharacters(Map <Character,Integer> map) {
         for (Map.Entry<Character,Integer> data: map.entrySet()) {
             if (data.getValue() > 1) {
-                System.out.println("Looks like I have some duplicate values");
                 return false;
             }
         }
-        System.out.println("Looks like I have unique values only");
         return true;
     }
 
