@@ -24,6 +24,8 @@ public class Main {
         System.out.println();
         System.out.println(firstNonRepeatingCharacter((LinkedHashMap<Character, Integer>) map));
         System.out.println("Keys: " + removeDuplicates("dennis"));
+        System.out.println(isStringEmpty(null));
+        swapStringsInPlace("den","nis");
 
     }
 
@@ -135,6 +137,27 @@ public class Main {
             }
         }
         return true;
+    }
+
+    public static boolean isStringEmpty(String str) {
+        try {
+            if (str.length() < 1) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Null string");
+        }
+        return false;
+    }
+
+    public static void swapStringsInPlace(String str1, String str2) {
+        System.out.println("Strings before swapping: " + str1 + " " + str2);
+
+        str1 = str1 + str2;
+        str2 = str1.substring(0, (str1.length() - str2.length()));
+        str1 = str1.substring(str2.length());
+
+        System.out.println("Strings after swapping: " + str1 + " " + str2);
     }
 
     public static boolean isAnagram(String str1, String str2) {
