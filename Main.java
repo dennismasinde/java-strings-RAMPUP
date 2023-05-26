@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Main {
@@ -19,6 +20,9 @@ public class Main {
         System.out.println(isPangram("the quick brown fox jumps over a lazy dog"));
         Map<Character, Integer> map = stringToMap("dennis");
         map.forEach((k,v) -> System.out.println(k + " " + v));
+        boolean res = mapHasUniqueCharacters(map);
+        System.out.println(res);
+        printNonRepeatedCharacters(map);
 
     }
 
@@ -189,6 +193,34 @@ public class Main {
 //            System.out.println("Key: " + data.getKey() + " Value: " + data.getValue());
 //        }
         return map;
+    }
+
+    public static boolean mapHasUniqueCharacters(Map<Character, Integer> map) {
+        for (Map.Entry<Character,Integer> data: map.entrySet()) {
+            if (data.getValue() > 1) {
+                System.out.println("Looks like I have some duplicate values");
+                return false;
+            }
+        }
+        System.out.println("Looks like I have unique values only");
+        return true;
+    }
+
+    public static void printNonRepeatedCharacters(Map<Character,Integer> map) {
+        map.forEach((k,v) -> {
+            if (v == 1) {
+                System.out.print(k);
+            }
+        });
+    }
+
+    public static void firstNonRepeatingCharacter(LinkedHashMap<Character,Integer> lhmap) {
+        lhmap.forEach((k,v) -> {
+            if (v == 1){
+                System.out.println("First non repeated character " + v);
+                System.exit(0);
+            }
+        });
     }
 
 }
