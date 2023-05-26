@@ -23,6 +23,14 @@ public class Main {
         boolean res = mapHasUniqueCharacters(map);
         System.out.println(res);
         printNonRepeatedCharacters(map);
+        LinkedHashMap<Character, Integer> lhmap = new LinkedHashMap<>();
+        lhmap.put('r',1);
+        lhmap.put('d', 4);
+        lhmap.put('e',1);
+        lhmap.put('s',1);
+        System.out.println();
+        firstNonRepeatingCharacter(lhmap);
+
 
     }
 
@@ -217,7 +225,7 @@ public class Main {
     public static void firstNonRepeatingCharacter(LinkedHashMap<Character,Integer> lhmap) {
         lhmap.forEach((k,v) -> {
             if (v == 1){
-                System.out.println("First non repeated character " + v);
+                System.out.println("First non repeated character " + k);
                 System.exit(0);
             }
         });
