@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
@@ -15,6 +17,8 @@ public class Main {
         System.out.println(containsIntegers("0567891"));
         System.out.println(isAnagram("oMo","moO"));
         System.out.println(isPangram("the quick brown fox jumps over a lazy dog"));
+        Map<Character, Integer> map = stringToMap("dennis");
+        map.forEach((k,v) -> System.out.println(k + " " + v));
 
     }
 
@@ -164,6 +168,27 @@ public class Main {
             }
         }
         return true;
+    }
+
+    public static Map<Character,Integer> stringToMap(String str) {
+        str = str.toLowerCase();
+        char [] ch = str.toCharArray();
+        Map<Character,Integer> map = new HashMap<>();
+
+        for (char data: ch) {
+            if (map.containsKey(data)) {
+                map.put(data, map.get(data) + 1);
+            } else {
+                map.put(data,1);
+            }
+        }
+//        map.forEach((k,v) -> System.out.println("Key: " + k + " Value: " + v));
+//        System.out.println();
+//
+//        for (Map.Entry<Character,Integer> data:map.entrySet()) {
+//            System.out.println("Key: " + data.getKey() + " Value: " + data.getValue());
+//        }
+        return map;
     }
 
 }
