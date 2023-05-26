@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -20,17 +19,11 @@ public class Main {
         System.out.println(isPangram("the quick brown fox jumps over a lazy dog"));
         Map<Character, Integer> map = stringToMap("dennis");
         map.forEach((k,v) -> System.out.println(k + " " + v));
-        boolean res = mapHasUniqueCharacters(map);
-        System.out.println(res);
+        System.out.println(mapHasUniqueCharacters(map));
         printNonRepeatedCharacters(map);
-        LinkedHashMap<Character, Integer> lhmap = new LinkedHashMap<>();
-        lhmap.put('r',1);
-        lhmap.put('d', 4);
-        lhmap.put('e',1);
-        lhmap.put('s',1);
         System.out.println();
-        firstNonRepeatingCharacter(lhmap);
-
+        System.out.println(firstNonRepeatingCharacter((LinkedHashMap<Character, Integer>) map));
+        System.out.println("Keys: " + removeDuplicates("dennis"));
 
     }
 
@@ -185,7 +178,7 @@ public class Main {
     public static Map<Character,Integer> stringToMap(String str) {
         str = str.toLowerCase();
         char [] ch = str.toCharArray();
-        Map<Character,Integer> map = new HashMap<>();
+        Map<Character,Integer> map = new LinkedHashMap<>();
 
         for (char data: ch) {
             if (map.containsKey(data)) {
@@ -194,16 +187,10 @@ public class Main {
                 map.put(data,1);
             }
         }
-//        map.forEach((k,v) -> System.out.println("Key: " + k + " Value: " + v));
-//        System.out.println();
-//
-//        for (Map.Entry<Character,Integer> data:map.entrySet()) {
-//            System.out.println("Key: " + data.getKey() + " Value: " + data.getValue());
-//        }
         return map;
     }
 
-    public static boolean mapHasUniqueCharacters(Map<Character, Integer> map) {
+    public static boolean mapHasUniqueCharacters(Map <Character,Integer> map) {
         for (Map.Entry<Character,Integer> data: map.entrySet()) {
             if (data.getValue() > 1) {
                 System.out.println("Looks like I have some duplicate values");
@@ -222,13 +209,22 @@ public class Main {
         });
     }
 
-    public static void firstNonRepeatingCharacter(LinkedHashMap<Character,Integer> lhmap) {
-        lhmap.forEach((k,v) -> {
-            if (v == 1){
-                System.out.println("First non repeated character " + k);
-                System.exit(0);
+    public static char firstNonRepeatingCharacter(LinkedHashMap<Character,Integer> lhmap) {
+        for (Map.Entry<Character, Integer> data: lhmap.entrySet()) {
+            if (data.getValue() == 1) {
+                return data.getKey();
             }
-        });
+        }
+        return ' ';
+    }
+
+    public static String removeDuplicates(String str) {
+        Map<Character,Integer> lhmap = stringToMap(str);
+        StringBuilder uniqueValues = new StringBuilder();
+        for (Map.Entry<Character,Integer> data: lhmap.entrySet()) {
+            uniqueValues.append(data.getKey());
+        }
+        return uniqueValues.toString();
     }
 
 }
